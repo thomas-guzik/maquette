@@ -5,8 +5,14 @@ class Project {
   double? size;
   bool? okay;
   List<Person>? persons;
-  String? dropdownValue;
+  String dropdownValue;
   String? id;
 
-  Project({this.title, this.size, this.okay, this.persons, this.dropdownValue, this.id});
+  Project(
+      {this.title,
+      this.size,
+      this.okay,
+      this.persons,
+      this.dropdownValue = "",
+      this.id});
 }
