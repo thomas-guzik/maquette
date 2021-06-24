@@ -28,7 +28,13 @@ class _ProjectFormScreenState extends State<ProjectFormScreen> {
               child: Column(
                 children: [
                   TextFormField(
+                    initialValue: widget.project.title,
                     decoration: InputDecoration(labelText: 'Projet'),
+                    onChanged: (String s) {
+                      print("tata"+ s);
+                      setState(() => widget.project.title = s);
+                    },
+
                   ),
                   DropdownInput(
                     items: ["", "One", "Two", "Three"],
