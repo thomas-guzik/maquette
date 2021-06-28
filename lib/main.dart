@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:maquette/entityStory/ProjectOperation.dart';
 import 'package:maquette/view/ProjectListScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  ProjectOperation projectOperation = ProjectOperation();
 
   @override
   Widget build(BuildContext ctx) {
-    return ProjectListScreen();
+    return ProjectListScreen(projects: projectOperation.listAll());
   }
 
   // This widget is the root of your application.

@@ -2,6 +2,7 @@ import 'Person.dart';
 
 class Project {
   String? title;
+  String? subtitle;
   double? size;
   bool? okay;
   List<Person>? persons;
@@ -14,5 +15,6 @@ class Project {
       this.okay,
       this.persons,
       this.dropdownValue = "",
+      this.subtitle,
       this.id});
 }

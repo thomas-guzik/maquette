@@ -4,13 +4,20 @@ import '../entity/Project.dart';
 import '../entityStory/ProjectOperation.dart';
 import '../view/ProjectFormScreen.dart';
 
-class ProjectListScreen extends StatelessWidget {
-  const ProjectListScreen({Key? key}) : super(key: key);
+class ProjectListScreen extends StatefulWidget {
+  List<Project> projects;
+  ProjectListScreen({Key? key, required this.projects}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<ProjectListScreen> createState() => _ProjectListScreenState();
+}
+
+class _ProjectListScreenState extends State<ProjectListScreen> {
     ProjectOperation projectOperation = ProjectOperation();
-    List<Project> projects = projectOperation.listAll();
+  @override
+  Widget build(BuildContext context) {
+    var projects = widget.projects;
+    //var projects = projectOperation.listAll();
 
     return MaterialApp(
       title: 'Fiche Contact',
@@ -23,17 +30,23 @@ class ProjectListScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
                 leading: Icon(Icons.toys),
-                title: Text(projects[index].title as String),
-                subtitle: Text('id: ' + projects[index].size.toString()),
+                title: Text(projects[index].title ?? "NO"),
+                subtitle: Text(projects[index].subtitle ?? "NO"),
                 trailing: Icon(Icons.arrow_forward),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          ProjectFormScreen(project: projects[index])));
-                });
-          },
+                          ProjectFormScreen(project: projects[index], update: (Project p) {
+                            print("2  " + (p.subtitle ?? ""));
+                            setState(() {
+                              projects[index] = p;
+                              projects[index].subtitle = p.subtitle;
+                              });
+                            print("3  " + (projects[index].subtitle ?? ""));
+                            }
+                            )));});
+          }),
         ),
-      ),
-    );
+      );
   }
-}
+  }
