@@ -103,7 +103,8 @@ return r;
                     print("1  " + (widget.project.subtitle??""));
                     widget.update(widget.project);
                   })),
-                  Col2(Text("Value----------------------------------------------" + (widget.project.subtitle ?? "")),Text("---------------------------------------------------"))
+                  Col2(Text("Value----------------------------------------------" + (widget.project.subtitle ?? "")),Text("---------------------------------------------------")),
+                  Col1(Container(child: Text("Essai",textAlign: TextAlign.center, style: TextStyle(fontSize: 18),),width: double.infinity,color: Colors.lightBlue.shade50,))
          ];
 
     return Scaffold(
